@@ -41,18 +41,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="QModInstaller">
-      <HintPath>..\assemblies\QModInstaller.dll</HintPath>
+      <HintPath>..\QModInstaller\bin\Debug\QModInstaller.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\assemblies\UnityEngine.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -86,7 +82,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,7 +92,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy /y "$(TargetDir)Mono.Cecil.dll" "$(SolutionDir)Result\Mono.Cecil.dll"
+copy /y "$(TargetDir)QModInstaller.dll" "$(SolutionDir)Result\QModInstaller.dll"
+copy /y "$(TargetDir)QModManager.exe" "$(SolutionDir)Result\QModManager.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>
